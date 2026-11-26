@@ -1,0 +1,114 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client"
+  output = "../generated/prisma"
+
+  moduleFormat = "esm"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------- Enums ----------
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum NoteStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// ---------- Models ----------
+
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  passwordHash String
+  displayName String?
+  role Role @default(USER)
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  notes Note[]
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id String @id @default(cuid())
+  userId String
+  tokenHash String @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  replacedByTokenHash String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model Tag {
+  id  String @id @default(cuid())
+  name String @unique
+  createdAt DateTime @default(now())
+
+  notes NoteTag[]
+
+  @@map("tags")
+}
+
+model Note {
+  id String @id @default(cuid())
+  authorId String
+  title String
+  content String
+  status NoteStatus @default(DRAFT)
+
+  // Геопозиция
+  latitude Float // -90..90
+  longitude Float // -180..180
+  locationName String?
+
+  // актуальность заметки
+  startsAt DateTime // когда активна
+  endsAt DateTime? // когда нет (null = бессрочная)
+
+  publishedAt DateTime? // когда опубликовали
+  deletedAt DateTime? // soft delete
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags NoteTag[]
+
+  @@index([authorId, status])
+  @@index([status, deletedAt, startsAt])
+  @@index([latitude, longitude])
+  @@index([createdAt])
+  @@map("notes")
+}
+
+// многие ко многим Note <-> Tag
+model NoteTag {
+  noteId String
+  tagId String
+
+  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag Tag @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([noteId, tagId])
+  @@index([tagId])
+  @@map("note_tags")
+}

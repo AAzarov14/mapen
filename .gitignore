@@ -1,0 +1,15 @@
+node_modules
+package-lock.json
+
+.env
+.env.*
+!.env.example
+
+server/src/generated/prisma
+server/src/prisma/migrations
+
+# AI Editors
+.windsurf/
+.claude/
+.agents/
+.cursor/
