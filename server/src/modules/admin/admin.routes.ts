@@ -12,7 +12,7 @@ import {
 
 export const adminRouter = Router();
 
-// Весь роутер только для админов
+// only for admin
 adminRouter.use(requireAuth, requireRole('ADMIN'));
 
 adminRouter.get('/users', validate(listUsersQuerySchema), controller.getUsers);

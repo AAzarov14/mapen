@@ -57,7 +57,7 @@ function buildWhere(user: AuthUser, q: ListNotesQuery): Prisma.NoteWhereInput {
   const where: Prisma.NoteWhereInput = { deletedAt: null };
   const isAdmin = user.role === 'ADMIN';
 
-  // authorId = me -> свой id
+  // authorId = me -> user id
   let authorId = q.authorId;
   if (authorId === 'me') authorId = user.id;
 

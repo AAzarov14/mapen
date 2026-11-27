@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# -builder
+# builder
 FROM deps AS build
 WORKDIR /app
 COPY . .

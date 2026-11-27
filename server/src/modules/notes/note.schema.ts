@@ -39,14 +39,14 @@ export const listNotesQuerySchema = z.object({
     limit: z.coerce.number().int().min(1).max(100).default(20),
     search: z.string().trim().min(1).optional(),
     status: z.enum(['draft', 'published', 'archived', 'all']).optional(),
-    authorId: z.string().min(1).optional(), // можно передать me
+    authorId: z.string().min(1).optional(), // me
     tagIds: z.string().min(1).optional(),   // id1,id2
     timeFrom: z.coerce.date().optional(),
     timeTo: z.coerce.date().optional(),
     activeNow: z.enum(['true', 'false']).optional(),
     lat: latitude.optional(),
     lng: longitude.optional(),
-    radius: z.coerce.number().positive().max(200_000).optional(), // метры
+    radius: z.coerce.number().positive().max(200_000).optional(), // meters
     minLat: latitude.optional(),
     maxLat: latitude.optional(),
     minLng: longitude.optional(),

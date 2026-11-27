@@ -1,4 +1,3 @@
-// prisma/seed.ts
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient, Role } from '../generated/prisma/client.js';
 import bcrypt from 'bcrypt';

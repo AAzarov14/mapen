@@ -1,5 +1,3 @@
-// prisma/schema.prisma
-
 generator client {
   provider = "prisma-client"
   output = "../generated/prisma"
@@ -12,7 +10,7 @@ datasource db {
   provider = "postgresql"
 }
 
-// ---------- Enums ----------
+// enums
 
 enum Role {
   USER
@@ -25,7 +23,7 @@ enum NoteStatus {
   ARCHIVED
 }
 
-// ---------- Models ----------
+// models
 
 model User {
   id String @id @default(cuid())
@@ -75,16 +73,15 @@ model Note {
   content String
   status NoteStatus @default(DRAFT)
 
-  // геопозиция
+  // geo
   latitude Float // -90..90
   longitude Float // -180..180
   locationName String?
 
-  // актуальность заметки
-  startsAt DateTime // когда активна
-  endsAt DateTime? // когда нет (null = бессрочная)
+  startsAt DateTime // when active
+  endsAt DateTime? // when deprecated (null = infinity)
 
-  publishedAt DateTime? // когда опубликовали
+  publishedAt DateTime? // when published
   deletedAt DateTime? // soft delete
 
   createdAt DateTime @default(now())
@@ -100,7 +97,7 @@ model Note {
   @@map("notes")
 }
 
-// многие ко многим Note <-> Tag
+// many to many Note <-> Tag
 model NoteTag {
   noteId String
   tagId String
