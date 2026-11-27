@@ -29,6 +29,6 @@ COPY --from=build /app/prisma7.config.ts ./prisma7.config.ts
 
 COPY --from=build /app/package.json ./
 
-EXPOSE 3000
+EXPOSE ${PORT}
 
 CMD ["sh", "-c", "npx prisma migrate deploy --schema=./src/prisma/schema.prisma && npx tsx src/server.ts"]
