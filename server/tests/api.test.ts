@@ -1,7 +1,7 @@
 import { api, registerUser } from './helpers';
 
 describe('Auth', () => {
-  it('1. register создаёт пользователя с ролью USER и выдаёт accessToken', async () => {
+  it('1. register создает пользователя с ролью USER и выдает accessToken', async () => {
     const res = await api.post('/api/v1/auth/register').send({
       email: 'ivan@test.com',
       password: 'password123',

@@ -14,7 +14,7 @@ describe('RBAC', () => {
     const asUser = await api.get('/api/v1/admin/users').set('Authorization', `Bearer ${stranger.token}`);
     expect(asUser.status).toBe(403);
 
-    // повышаем роль в БД и перезалогиниваемся: роль живёт в JWT, поэтому нужен новый токен
+    // повышаем роль в БД и перезалогиниваемся: роль живет в JWT, поэтому нужен новый токен
     await makeAdmin('stranger@test.com');
     const { token: adminToken } = await loginUser('stranger@test.com', TEST_PASSWORD);
 

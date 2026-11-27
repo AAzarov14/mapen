@@ -41,7 +41,7 @@ describe('Notes', () => {
     await createNote(token, { publish: true, latitude: 55.750, longitude: 37.610, startsAt: new Date(now - 60_000).toISOString(), endsAt: inHour });
     // далеко
     await createNote(token, { publish: true, latitude: 56.5, longitude: 38.5 });
-    // близко, но начнётся через час
+    // близко, но начнется через час
     await createNote(token, { publish: true, latitude: 55.751, longitude: 37.611, startsAt: inHour });
 
     const res = await api

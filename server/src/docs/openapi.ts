@@ -382,7 +382,7 @@ export const openapiDocument = {
           content: { 'application/json': { schema: { $ref: '#/components/schemas/ChangePasswordRequest' } } },
         },
         responses: {
-          '204': { description: 'Пароль изменён' },
+          '204': { description: 'Пароль изменен' },
           '401': { $ref: '#/components/responses/Unauthorized' },
         },
       },
@@ -467,7 +467,7 @@ export const openapiDocument = {
           content: { 'application/json': { schema: { $ref: '#/components/schemas/NoteUpdate' } } },
         },
         responses: {
-          '200': { description: 'Обновлённая заметка', content: { 'application/json': { schema: { $ref: '#/components/schemas/NoteResponse' } } } },
+          '200': { description: 'Обновленная заметка', content: { 'application/json': { schema: { $ref: '#/components/schemas/NoteResponse' } } } },
           '403': { $ref: '#/components/responses/Forbidden' },
           '404': { $ref: '#/components/responses/NotFound' },
         },
@@ -516,7 +516,7 @@ export const openapiDocument = {
     '/notes/{id}/restore': {
       post: {
         tags: ['Notes'],
-        summary: 'Восстановить удалённую заметку',
+        summary: 'Восстановить удаленную заметку',
         security: [{ bearerAuth: [] }],
         parameters: [{ $ref: '#/components/parameters/NoteIdParam' }],
         responses: {
@@ -569,7 +569,7 @@ export const openapiDocument = {
           content: { 'application/json': { schema: { type: 'object', properties: { name: { type: 'string' } } } } },
         },
         responses: {
-          '200': { description: 'Тег обновлён' },
+          '200': { description: 'Тег обновлен' },
           '403': { $ref: '#/components/responses/Forbidden' },
           '404': { $ref: '#/components/responses/NotFound' },
         },
@@ -580,7 +580,7 @@ export const openapiDocument = {
         security: [{ bearerAuth: [] }],
         parameters: [{ $ref: '#/components/parameters/TagIdParam' }],
         responses: {
-          '204': { description: 'Тег удалён' },
+          '204': { description: 'Тег удален' },
           '403': { $ref: '#/components/responses/Forbidden' },
           '404': { $ref: '#/components/responses/NotFound' },
         },
@@ -628,7 +628,7 @@ export const openapiDocument = {
           content: { 'application/json': { schema: { $ref: '#/components/schemas/UserUpdateRequest' } } },
         },
         responses: {
-          '200': { description: 'Обновлённый пользователь' },
+          '200': { description: 'Обновленный пользователь' },
           '403': { $ref: '#/components/responses/Forbidden' },
           '404': { $ref: '#/components/responses/NotFound' },
         },
