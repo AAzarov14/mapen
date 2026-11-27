@@ -100,7 +100,7 @@ docker compose logs -f api
 | POST | `/:id/archive` | Архивировать |
 | POST | `/:id/restore` | Восстановить |
 
-### Admin (`/api/v1/admin`) — только ADMIN
+### Admin (`/api/v1/admin`) - только ADMIN
 
 | Метод | Путь | Описание |
 |-------|------|----------|

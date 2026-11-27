@@ -16,7 +16,7 @@ describe('Notes', () => {
     expect(bad.body.error.code).toBe('VALIDATION_ERROR');
   });
 
-  it('6. черновик виден только автору; после publish — всем', async () => {
+  it('6. черновик виден только автору; после publish - всем', async () => {
     const author = await registerUser('author@test.com');
     const other = await registerUser('other@test.com');
     const note = await createNote(author.token);

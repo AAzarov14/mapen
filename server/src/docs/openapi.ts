@@ -6,7 +6,7 @@ export const openapiDocument = {
     description:
       'API сервиса заметок с привязкой к геопозиции и времени. ' +
       'Авторизация: JWT access-токен в заголовке Authorization, ' +
-      'refresh-токен — в httpOnly cookie (для /auth/refresh и /auth/logout). ' +
+      'refresh-токен - в httpOnly cookie (для /auth/refresh и /auth/logout). ' +
       'Роли: USER, ADMIN.',
   },
   servers: [{ url: 'http://localhost:3000/api/v1', description: 'Локальный сервер' }],
@@ -395,8 +395,8 @@ export const openapiDocument = {
         summary: 'Список заметок с фильтрацией и пагинацией',
         description:
           'По умолчанию возвращает опубликованные заметки. ' +
-          'Черновики/архив — только свои (или все для ADMIN). ' +
-          'authorId=me — свои заметки, status=all — все свои статусы.',
+          'Черновики/архив - только свои (или все для ADMIN). ' +
+          'authorId=me - свои заметки, status=all - все свои статусы.',
         security: [{ bearerAuth: [] }],
         parameters: [
           { $ref: '#/components/parameters/PageParam' },
@@ -694,7 +694,7 @@ export const openapiDocument = {
     '/admin/notes/{id}': {
       delete: {
         tags: ['Admin'],
-        summary: 'Удалить заметку (soft; hard=true — физически)',
+        summary: 'Удалить заметку (soft; hard=true - физически)',
         security: [{ bearerAuth: [] }],
         parameters: [
           { $ref: '#/components/parameters/NoteIdParam' },
