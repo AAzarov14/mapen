@@ -3,10 +3,10 @@ import jwt, { type SignOptions } from 'jsonwebtoken';
 const ACCESS_SECRET = process.env.JWT_ACCESS_SECRET ?? 'dev-access-secret';
 const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET ?? 'dev-refresh-secret';
 
-const ACCESS_TTL = (process.env.ACCESS_TOKEN_TTL ?? '15m') as SignOptions['expiresIn'];
+const ACCESS_TTL = (process.env.ACCESS_TOKEN_TTL ?? '15m') as Exclude<SignOptions['expiresIn'], undefined>;
 
 export const REFRESH_TTL_DAYS = Number(process.env.REFRESH_TTL_DAYS ?? 30);
-const REFRESH_TTL = `${REFRESH_TTL_DAYS}d` as SignOptions['expiresIn'];
+const REFRESH_TTL = `${REFRESH_TTL_DAYS}d` as Exclude<SignOptions['expiresIn'], undefined>;
 
 export interface AccessTokenPayload {
   sub: string;

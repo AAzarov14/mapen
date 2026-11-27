@@ -75,7 +75,7 @@ model Note {
   content String
   status NoteStatus @default(DRAFT)
 
-  // Геопозиция
+  // геопозиция
   latitude Float // -90..90
   longitude Float // -180..180
   locationName String?
