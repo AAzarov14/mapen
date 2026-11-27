@@ -8,7 +8,7 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "tsx --env-file=../.env src/server.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json",
     "start": "node dist/server.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
     "prisma:generate": "prisma generate",

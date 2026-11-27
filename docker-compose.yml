@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
     environment:
       NODE_ENV: production
-      PORT: 4000
+      PORT: 3000
       # db, not localhost
       DATABASE_URL: postgresql://postgres:postgres@db:5432/mapen
       JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev_access_secret_change_me}
@@ -44,7 +44,7 @@ services:
       REFRESH_TTL_DAYS: 30
       CLIENT_URL: ${CLIENT_URL:-http://localhost:5173}
     ports:
-      - "4000:4000"
+      - "3000:3000"
     depends_on:
       db:
         condition: service_healthy   # start when postgres is up
